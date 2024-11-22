@@ -181,20 +181,25 @@
                     {% for post in posts %}
                     <div class="steps__card">
                         <div class="post">
-                            {% for image in post.images.all %}
-                            <img src="{{ image.image.url }}" alt="{{ image.caption }}" class="post__image">
-                            {% endfor %}
+                            {% if post.images.all %}
+                                {% for image in post.images.all %}
+                                <img src="{{ image.image.url }}" alt="{{ image.caption }}" class="post__image">
+                                {% endfor %}
+                            {% else %}
+                                <img src="{% static 'images/default.jpg' %}" alt="Imagen por defecto" class="post__image">
+                            {% endif %}
                             <div class="post__content">
                                 <h3 class="post__title">{{ post.title }}</h3>
-                                <p>{{ post.description }}</p>
+                                <p>{{ post.description|truncatechars:100 }}</p>
                                 <small>Fecha: {{ post.created_at|date:"d M Y H:i" }}</small>
+                                <a href="{% url 'detect_objects' post.id %}" class="post__link">Ver detecciones</a>
                             </div>
                         </div>
                     </div>
                     {% endfor %}
                 </div>
             </div>
-        </section>        
+        </section>     
         
         <!--==================== FOOTER ====================-->
         <footer class="footer section">

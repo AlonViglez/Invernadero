@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detección de Objetos</title>
+</head>
+<body>
+    <h1>Resultados de la Detección</h1>
+    <img src="{{ image.image.url }}" alt="Imagen analizada" style="max-width: 500px;">
+    <ul>
+        {% for detection in detections %}
+            <li>
+                Clase: {{ detection.class }} - Confianza: {{ detection.confidence }}<br>
+                Coordenadas: {{ detection.coordinates }}
+            </li>
+        {% empty %}
+            <li>No se detectaron objetos en esta imagen.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
