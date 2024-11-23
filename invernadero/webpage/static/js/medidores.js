@@ -53,3 +53,30 @@ function actualizarGaugeT() {
 
 // Actualizar el gauge de temperatura cada 500 ms
 setInterval(actualizarGaugeT, 500);
+
+// Inicializar el gauge para la Temperatura
+var gaugeHumedadsuelo = new JustGage({
+    id: "gauge5",
+    value: 0, // Valor inicial
+    min: 0,
+    max: 40,
+    decimals: 2,
+    gaugeWidthScale: 0.6,
+    valueFontColor: "#1f1d1d"
+});
+
+function actualizarGaugeHS() {
+    // Obtener el valor actual del span de Temperatura
+    var Humedadsuelo = parseFloat(document.getElementById("Humedadsuelo").innerText);
+
+    // Verificar si el valor es un número válido
+    if (!isNaN(Humedadsuelo)) {
+        // Actualizar el gauge con la nueva Temperatura
+        gaugeHumedadsuelo.refresh(Humedadsuelo);
+    } else {
+        console.error("El valor de la Temperatura no es un número válido:", Humedadsuelo);
+    }
+}
+
+// Actualizar el gauge de temperatura cada 500 ms
+setInterval(actualizarGaugeHS, 500);

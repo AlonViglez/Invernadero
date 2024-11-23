@@ -1,115 +1,41 @@
-var $Temp = $('#Temperatura');  // asignamos el objeto Temperatura a una variable nueva
+var $Temp = $('#Temperatura');
+var $Hum = $('#Humedad');
+var $Humidity = $('#Humedadsuelo');
 
-
-var $Hum= $('#Humedad'); // asignamos el objeto  Humedad a una variable nueva
-
-
-var temp=0;
-
-
-var hum=0;
-
+var temp = 0;
+var hum = 0;
+var humidity = 0;
 
 var particle = new Particle();
-
-
 var token;
 
-
-particle.login({username:
-'mafuba61@gmail.com', password: 'mafuba62'}).then(
-
-
-  function(data) {
-
-
-     token = data.body.access_token;
-
-
-  },
-
-
-  function (err) {
-
-
-    console.log('Could not log in.', err);
-
-
-  }
-
-
+particle.login({username: 'mafuba61@gmail.com', password: 'mafuba62'}).then(
+    function(data) {
+        token = data.body.access_token;
+    },
+    function(err) {
+        console.error('Could not log in.', err);
+    }
 );
 
+setInterval(function() {
+    Promise.all([
+        particle.getVariable({ deviceId: '40003c000e47313037363132', name: 'TEMP', auth: token }),
+        particle.getVariable({ deviceId: '40003c000e47313037363132', name: 'HUM', auth: token }),
+        particle.getVariable({ deviceId: '40003c000e47313037363132', name: 'Humidity', auth: token })
+    ]).then(function([tempData, humData, humidityData]) {
+        temp = tempData.body.result;
+        hum = humData.body.result;
+        humidity = humidityData.body.result;
 
-setInterval(function()
-{
+        let Temp = temp.toFixed(2);
+        let Hum = hum.toFixed(2);
+        let Humidity = humidity.toFixed(2);
 
-
- 
-
-
-  particle.getVariable({ deviceId:
-'40003c000e47313037363132', name: 'TEMP', auth: token }).then(function(data) {
-
-
- 
-
-
-  console.log('Device variable retrievedsuccessfully:', data);
-
-
-  temp=data.body.result;
-
-
-  
-
-
-},
-function(err) {
-
-
-  console.log('An error occurred while gettingattrs:', err);
-
-
-});
-
-
-      particle.getVariable({ deviceId:
-'40003c000e47313037363132', name: 'HUM', auth: token }).then(function(data) {
-
-
- 
-
-
-  console.log('Device variable retrievedsuccessfully:', data);
-
-
-  hum=data.body.result;
-
-
-  
-
-
-},
-function(err) {
-
-
-  console.log('An error occurred while gettingattrs:', err);
-
-
-});
-
-
- Hum = hum.toFixed(2);
-
-
-Temp = temp.toFixed(2);
-
-
-$Hum.text(Hum+"%");
-
-
-$Temp.text(Temp+"°C");
-
-
-},6000);
+        $Temp.text(Temp + "°C");
+        $Hum.text(Hum + "%");
+        $Humidity.text(Humidity + "%");
+    }).catch(function(err) {
+        console.error('Error retrieving variables:', err);
+    });
+}, 5000);

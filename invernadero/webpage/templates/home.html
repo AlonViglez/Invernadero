@@ -6,6 +6,17 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!--=============== para llamar a las apis===============-->
+        <script rel="stylesheet" src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/particle-api-js@10/dist/particle.min.js"></script>
+        <script rel="stylesheet" src="https://kit.fontawesome.com/a076d05399.js"></script>
+        <script rel="stylesheet" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        <script rel="stylesheet" src=" https://cdnjs.cloudflare.com/ajax/libs/d3/4.9.0/d3.min.js"></script>
+
+        <!--  para llamar a los medidores  -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.4/raphael-min.js"></script> 
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/justgage/1.2.9/justgage.min.js"></script>
 
         <!--=============== FAVICON ===============-->
         <link rel="shortcut icon" href="{% static 'img/favicon.png' %}" type="image/x-icon">
@@ -135,7 +146,9 @@
                     </div>
                 </div>
             </section>
-
+            <span id="Humedad" hidden>??? </span>
+            <span id="Temperatura" hidden>??</span>
+            <span id="Humedadsuelo" hidden>??</span> 
             <!--==================== STEPS ====================-->
             <section class="steps section container">
                 <div class="steps__bg">
@@ -143,29 +156,29 @@
                         Humedad en el Cultivo
                     </h2>
 
-                    <div class="steps__container grid">
+                    <div class="steps__container grid ">
                         <div class="steps__card">
-                            <div class="steps__card-number">01</div>
-                            <h3 class="steps__card-title">Masorca</h3>
-                            <p class="steps__card-description">
-                                Humedad: 27%
-                            </p>
+                            <h3 class="steps__card-title">Humedad Ambiente </h3>
+                            <!--<div class="steps__card-number">01</div>-->
+                            <div>
+                                <div id="gauge3"></div>
+                            </div>
                         </div>
 
                         <div class="steps__card">
-                            <div class="steps__card-number">02</div>
-                            <h3 class="steps__card-title">Trigo</h3>
-                            <p class="steps__card-description">
-                                Humedad: 39%
-                            </p>
+                            <h3 class="steps__card-title">Temperatura ambiente</h3>
+                            <!--<div class="steps__card-number">02</div>-->
+                            <div>
+                                <div id="gauge4"></div>
+                            </div>
                         </div>
 
                         <div class="steps__card">
-                            <div class="steps__card-number">03</div>
-                            <h3 class="steps__card-title">Rosas</h3>
-                            <p class="steps__card-description">
-                                Humedad: 23%
-                            </p>
+                            <h3 class="steps__card-title">Humedad del Suelo</h3>
+                            <!--<div class="steps__card-number">02</div>-->
+                            <div>
+                                <div id="gauge5"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -268,6 +281,8 @@
         
         <!--=============== MAIN JS ===============-->
         <script src="{% static 'js/main.js' %}"></script>
+        <script src="{% static 'js/medidores.js' %}"></script>
+        <script src="{% static 'js/sensordht11.js' %}"></script>
     </body>
 </html>
 
