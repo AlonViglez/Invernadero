@@ -6,50 +6,37 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <!--=============== para llamar a las apis===============-->
-        <script rel="stylesheet" src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></script>
-        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/particle-api-js@10/dist/particle.min.js"></script>
-        <script rel="stylesheet" src="https://kit.fontawesome.com/a076d05399.js"></script>
-        <script rel="stylesheet" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-        <script rel="stylesheet" src=" https://cdnjs.cloudflare.com/ajax/libs/d3/4.9.0/d3.min.js"></script>
-
-        <!--  para llamar a los medidores  -->
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.4/raphael-min.js"></script> 
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/justgage/1.2.9/justgage.min.js"></script>
 
         <!--=============== FAVICON ===============-->
         <link rel="shortcut icon" href="{% static 'img/favicon.png' %}" type="image/x-icon">
-        <link rel="shortcut icon" href="{% static 'img/guardado.png' %}" type="image/x-icon">
 
         <!--=============== REMIX ICONS ===============-->
         <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
 
-        <!--=============== Favoritos ICONS ===============-->
-    
         <!--=============== CSS ===============-->
         <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 
+        <title>Responsive plants website - Bedimcode</title>
     </head>
     <body>
         <!--==================== HEADER ====================-->
         <header class="header" id="header">
             <nav class="nav container">
                 <a href="#" class="nav__logo">
-                    <i class="ri-leaf-line nav__logo-icon"></i> Crop-Crop
-                </a>    
+                    <i class="ri-leaf-line nav__logo-icon"></i> Plantex
+                </a>
 
                 <div class="nav__menu" id="nav-menu">
                     <ul class="nav__list">
                         <li class="nav__item">
-                            <a href="#home" class="nav__link active-link">Inicio</a>
+                            <a href="#home" class="nav__link active-link">Home</a>
                         </li>
                         <li class="nav__item">
-                            <a href="#about" class="nav__link">acerca de</a>
+                            <a href="#about" class="nav__link">About</a>
                         </li>
                         
                         <li class="nav__item">
-                            <a href="#contact" class="nav__link">Contacto</a>
+                            <a href="#contact" class="nav__link">Contact Us</a>
                         </li>
                     </ul>
 
@@ -73,22 +60,23 @@
             <!--==================== HOME ====================-->
             <section class="home" id="home">
                 <div class="home__container container grid">
-                    <img src="{% static 'img/home.jpeg' %}" alt="" class="home__img">
+                    <img src="{% static 'img/home.png' %}" alt="" class="home__img">
 
                     <div class="home__data">
                         <h1 class="home__title">
-                            Los cultivos automatizados<br> Mejorarán tu vida
+                            Plants will make <br> your life better
                         </h1>
                         <p class="home__description">
-                            Visualiza los datos en tiempo real de tu sistema de cultivo inteligente desde cualquier lugar. Lleva eficiencia y frescura a tu espacio.
+                            Create incredible plant design for your offices or apastaments. 
+                            Add fresness to your new ideas.
                         </p>
                         <a href="#about" class="button button--flex">
-                            ¿Quienes somos? <i class="ri-arrow-right-down-line button__icon"></i>
+                            Explore <i class="ri-arrow-right-down-line button__icon"></i>
                         </a>
                     </div>
 
                     <div class="home__social">
-                        <span class="home__social-follow">Siguenos</span>
+                        <span class="home__social-follow">Follow Us</span>
 
                         <div class="home__social-links">
                             <a href="https://www.facebook.com/" target="_blank" class="home__social-link">
@@ -112,73 +100,70 @@
 
                     <div class="about__data">
                         <h2 class="section__title about__title">
-                            Quiénes Somos & <br> ¿Por Qué Elegir Nuestro Proyecto?
+                            Who we really are & <br> why choose us
                         </h2>
 
                         <p class="about__description">
-                            Somos un grupo de estudiantes apasionados por la agricultura y la tecnología.
-                            Estamos desarrollando un sistema automatizado para optimizar el proceso de cultivo a través de la programación.
-                            Estas son las razones por las que creemos que nuestro proyecto tiene un gran potencial:
+                            We have over 4000+ unbiased reviews and our customers 
+                            trust our plant process and delivery service every time
                         </p>
 
                         <div class="about__details">
                             <p class="about__details-description">
                                 <i class="ri-checkbox-fill about__details-icon"></i>
-                                Automatización del Cultivo.
+                                We always deliver on time.
                             </p>
                             <p class="about__details-description">
                                 <i class="ri-checkbox-fill about__details-icon"></i>
-                                Monitoreo Remoto.
+                                We give you guides to protect and care for your plants.
                             </p>
                             <p class="about__details-description">
                                 <i class="ri-checkbox-fill about__details-icon"></i>
-                                Innovación en Agricultura.
+                                We always come over for a check-up after sale.
                             </p>
                             <p class="about__details-description">
                                 <i class="ri-checkbox-fill about__details-icon"></i>
-                                Control Óptimo de Condiciones.
+                                100% money back guaranteed.
                             </p>
                         </div>
 
                         <a href="#" class="button--link button--flex">
-                            Datos del Sensor<i class="ri-arrow-right-down-line button__icon"></i>
+                            Shop Now <i class="ri-arrow-right-down-line button__icon"></i>
                         </a>
                     </div>
                 </div>
             </section>
-            <span id="Humedad" hidden>??? </span>
-            <span id="Temperatura" hidden>??</span>
-            <span id="Humedadsuelo" hidden>??</span> 
+
             <!--==================== STEPS ====================-->
             <section class="steps section container">
                 <div class="steps__bg">
                     <h2 class="section__title-center steps__title">
-                        Humedad en el Cultivo
+                        Steps to start your <br> plants off right
                     </h2>
 
-                    <div class="steps__container grid ">
+                    <div class="steps__container grid">
                         <div class="steps__card">
-                            <h3 class="steps__card-title">Humedad Ambiente </h3>
-                            <!--<div class="steps__card-number">01</div>-->
-                            <div>
-                                <div id="gauge3"></div>
-                            </div>
+                            <div class="steps__card-number">01</div>
+                            <h3 class="steps__card-title">Choose Plant</h3>
+                            <p class="steps__card-description">
+                                We have several varieties plants you can choose from.
+                            </p>
                         </div>
 
                         <div class="steps__card">
-                            <h3 class="steps__card-title">Temperatura ambiente</h3>
-                            <!--<div class="steps__card-number">02</div>-->
-                            <div>
-                                <div id="gauge4"></div>
-                            </div>
+                            <div class="steps__card-number">02</div>
+                            <h3 class="steps__card-title">Place an order</h3>
+                            <p class="steps__card-description">
+                                Once your order is set, we move to the next step which is the shipping.
+                            </p>
                         </div>
 
                         <div class="steps__card">
-                            <h3 class="steps__card-title">Humedad del Suelo</h3>
-                            <!--<div class="steps__card-number">02</div>-->
-                            <div>
-                                <div id="gauge5"></div>
-                            </div>
+                            <div class="steps__card-number">03</div>
+                            <h3 class="steps__card-title">Get plants delivered</h3>
+                            <p class="steps__card-description">
+                                Our delivery process is easy, you receive the plant direct to your door.
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -186,71 +171,43 @@
 
         </main>
 
-        <section class="steps section container">
-            <div class="steps__bg">
-                <h2 class="section__title-center steps__title">Galería de Registros</h2>
-        
-                <div class="steps__container grid">
-                    {% for post in posts %}
-                    <div class="steps__card">
-                        <div class="post">
-                            {% if post.images.all %}
-                                {% for image in post.images.all %}
-                                <img src="{{ image.image.url }}" alt="{{ image.caption }}" class="post__image">
-                                {% endfor %}
-                            {% else %}
-                                <img src="{% static 'images/default.jpg' %}" alt="Imagen por defecto" class="post__image">
-                            {% endif %}
-                            <div class="post__content">
-                                <h3 class="post__title">{{ post.title }}</h3>
-                                <p>{{ post.description|truncatechars:100 }}</p>
-                                <small>Fecha: {{ post.created_at|date:"d M Y H:i" }}</small>
-                                <a href="{% url 'detect_objects' post.id %}" class="post__link">Ver detecciones</a>
-                            </div>
-                        </div>
-                    </div>
-                    {% endfor %}
-                </div>
-            </div>
-        </section>     
-        
         <!--==================== FOOTER ====================-->
         <footer class="footer section">
             <div class="footer__container container grid">
                 <div class="footer__content">
                     <a href="#" class="footer__logo">
-                        <i class="ri-leaf-line footer__logo-icon"></i> Crop-Crop
+                        <i class="ri-leaf-line footer__logo-icon"></i> Plantex
                     </a>
 
                     <h3 class="footer__title">
-                        Recibe actualizaciones sobre nuestras innovaciones.
+                        Subscribe to our newsletter <br> to stay update
                     </h3>
 
                     <div class="footer__subscribe">
-                        <input type="email" placeholder="Ingresa tu email" class="footer__input">
+                        <input type="email" placeholder="Enter your email" class="footer__input">
 
                         <button class="button button--flex footer__button">
-                            Enviar
+                            Subscribe
                             <i class="ri-arrow-right-up-line button__icon"></i>
                         </button>
                     </div>
                 </div>
 
                 <div class="footer__content">
-                    <h3 class="footer__title">Direccion</h3>
+                    <h3 class="footer__title">Our Address</h3>
 
                     <ul class="footer__data">
-                        <li class="footer__information">1234 - Manzanillo</li>
-                        <li class="footer__information">Naranjo - 43210</li>
+                        <li class="footer__information">1234 - Peru</li>
+                        <li class="footer__information">La Libertad - 43210</li>
                         <li class="footer__information">123-456-789</li>
                     </ul>
                 </div>
 
                 <div class="footer__content">
-                    <h3 class="footer__title">Contacto</h3>
+                    <h3 class="footer__title">Contact Us</h3>
 
                     <ul class="footer__data">
-                        <li class="footer__information">+52 111111</li>
+                        <li class="footer__information">+999 888 777</li>
                         
                         <div class="footer__social">
                             <a href="https://www.facebook.com/" class="footer__social-link">
@@ -268,7 +225,7 @@
 
             </div>
 
-            <p class="footer__copy">&#169; Belicos. All rigths reserved</p>
+            <p class="footer__copy">&#169; Bedimcode. All rigths reserved</p>
         </footer>
         
         <!--=============== SCROLL UP ===============-->
@@ -281,8 +238,6 @@
         
         <!--=============== MAIN JS ===============-->
         <script src="{% static 'js/main.js' %}"></script>
-        <script src="{% static 'js/medidores.js' %}"></script>
-        <script src="{% static 'js/sensordht11.js' %}"></script>
     </body>
 </html>
 

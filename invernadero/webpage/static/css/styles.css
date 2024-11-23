@@ -454,6 +454,13 @@ the website, in dark theme
   padding-top: 1rem;
 }
 
+.steps__container2 {
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  
+}
+
 .steps__title{
   color: #FFF;
 }
@@ -462,6 +469,14 @@ the website, in dark theme
   background-color: var(--container-color);
   padding: 2.5rem 3rem 2rem 1.5rem;
   border-radius: 1rem;
+}
+
+
+.steps__card2{
+  background-color: var(--container-color);
+  padding: 2.5rem 3rem 2rem 1.5rem;
+  border-radius: 1rem;
+  
 }
 
 .steps__card-number{
