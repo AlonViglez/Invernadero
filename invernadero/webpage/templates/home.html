@@ -180,6 +180,25 @@
                                 <div id="gauge5"></div>
                             </div>
                         </div>
+                        <div class="steps__card">
+                            <h3 class="steps__card-title">Pronóstico del Tiempo</h3>
+                            
+                            {% if pronostico %}
+                            <div>
+                                <p>Ciudad: {{ pronostico.ciudad }}</p>
+                                <p>Temperatura: {{ pronostico.temperatura }} °C</p>
+                                <p>Humedad: {{ pronostico.humedad }}%</p>
+                                <p>Descripción: {{ pronostico.descripcion }}</p>
+                                <!-- Envuelve el icono en un div con clase `weather-icon` -->
+                                <div class="weather-icon">
+                                    <img src="http://openweathermap.org/img/wn/{{ pronostico.icono }}@2x.png" alt="Icono del clima">
+                                </div>
+                            </div>
+                            {% else %}
+                            <p>No se pudo obtener el pronóstico del clima.</p>
+                            {% endif %}
+                        </div>
+                        
                     </div>
                 </div>
             </section>
