@@ -4,7 +4,7 @@ from ultralytics import YOLO
 import os
 
 import requests
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Post  # Asegúrate de que el modelo Post esté importado
 
 def home(request):
@@ -37,9 +37,33 @@ def home(request):
 
     # Devuelve la vista de inicio con los posts y el pronóstico del clima
     return render(request, 'home.html', {'posts': posts, 'pronostico': pronostico})
+#encender bomba desde un boton
+def activar_bomba(request):
+    device_id = "370039001547313036303933"
+    token = "d3c822f9061123b3e8b44f59b308dfcf3039abb3"
+    
+    # Enviar comando "ON" o "OFF"
+    url = f"https://api.particle.io/v1/devices/{device_id}/activarbomba"
+    data = {
+        "access_token": token,
+        "arg": "ON"  # o "OFF" para apagar
+    }
+    response = requests.post(url, data=data)
+    
+    return HttpResponse(f"Estado bomba: {response.json()['return_value']}")
 
-
-
+def desactivar_bomba(request):
+    device_id = "370039001547313036303933"
+    token = "d3c822f9061123b3e8b44f59b308dfcf3039abb3"
+    # Enviar comando "ON" o "OFF"
+    url = f"https://api.particle.io/v1/devices/{device_id}/activarbomba"
+    data = {
+        "access_token": token,
+        "arg": "OFF"  # o "OFF" para apagar
+    }
+    response = requests.post(url, data=data)
+    return HttpResponse(f"Estado bomba: {response.json()['return_value']}")
+    
 def detect_objects(request, image_id):
     # Ruta absoluta del modelo YOLO
     model_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'models', 'best.pt')
