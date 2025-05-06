@@ -42,7 +42,7 @@ def home(request):
 
 def detect_objects(request, image_id):
     # Ruta absoluta del modelo YOLO
-    model_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'models', 'best.pt')
+    model_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'models', 'yolov8s.pt')
     
     # Verifica si el modelo existe
     if not os.path.exists(model_path):
