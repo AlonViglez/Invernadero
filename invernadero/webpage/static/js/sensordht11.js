@@ -20,9 +20,9 @@ particle.login({username: 'mafuba61@gmail.com', password: 'mafuba62'}).then(
 
 setInterval(function() {
     Promise.all([
-        particle.getVariable({ deviceId: '40003c000e47313037363132', name: 'TEMP', auth: token }),
-        particle.getVariable({ deviceId: '40003c000e47313037363132', name: 'HUM', auth: token }),
-        particle.getVariable({ deviceId: '40003c000e47313037363132', name: 'Humidity', auth: token })
+        particle.getVariable({ deviceId: '370039001547313036303933', name: 'TEMP', auth: token }),
+        particle.getVariable({ deviceId: '370039001547313036303933', name: 'HUM', auth: token }),
+        particle.getVariable({ deviceId: '370039001547313036303933', name: 'Humidity', auth: token })
     ]).then(function([tempData, humData, humidityData]) {
         temp = tempData.body.result;
         hum = humData.body.result;
