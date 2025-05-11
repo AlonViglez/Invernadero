@@ -6,10 +6,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
     <title>Detección de Plagas</title>
 
 </head>
 <body>
+
+    <header class="header" id="header">
+        <nav class="nav container">
+            <a href="#" class="nav__logo">
+                <i class="ri-leaf-line nav__logo-icon"></i> Crop-Crop
+            </a>    
+
+            <div class="nav__btns">
+                <!-- Theme change button -->
+                <i class="ri-moon-line change-theme" id="theme-button"></i>
+            </div>
+        </nav>
+    </header>
+
     <section class="steps section container">
         <div class="steps__bg">
             <h2 class="section__title-center steps__title">Deteccion de Plagas</h2>
@@ -33,6 +48,11 @@
                                 {% empty %}
                                     <li>No se detectaron plagas en esta imagen.</li>
                                 {% endfor %}
+
+                                <br>
+                                <a href="{% url 'home' %}" class="button button--flex">
+                                    Regresar <i class="ri-arrow-right-down-line button__icon"></i>
+                                </a>
                             </ul>
                         </div>
                     </div>
@@ -40,6 +60,8 @@
             </div>
         </div>
     </section>
-    
+
+    <script src="{% static 'js/main.js' %}"></script>
+
 </body>
 </html>

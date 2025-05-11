@@ -49,6 +49,14 @@
                         </li>
                         
                         <li class="nav__item">
+                            <a href="#cultivo" class="nav__link">Datos del Sensor</a>
+                        </li>
+
+                        <li class="nav__item">
+                            <a href="#Registros" class="nav__link">Galeria de Registros</a>
+                        </li>
+
+                        <li class="nav__item">
                             <a href="#contact" class="nav__link">Contacto</a>
                         </li>
                     </ul>
@@ -140,7 +148,7 @@
                             </p>
                         </div>
 
-                        <a href="#" class="button--link button--flex">
+                        <a href="#cultivo"  class="button--link button--flex">
                             Datos del Sensor<i class="ri-arrow-right-down-line button__icon"></i>
                         </a>
                     </div>
@@ -150,7 +158,7 @@
             <span id="Temperatura" hidden>??</span>
             <span id="Humedadsuelo" hidden>??</span> 
             <!--==================== STEPS ====================-->
-            <section class="steps section container">
+            <section class="steps section container" id="cultivo">
                 <div class="steps__bg">
                     <h2 class="section__title-center steps__title">
                         Humedad en el Cultivo
@@ -199,18 +207,30 @@
                             {% endif %}
                         </div>
                         <div class="steps__card">
-                            <a href="{% url 'activar_bomba' %}" class="btn btn-primary">Activar bomba</a>
-                            <a href="{% url 'desactivar_bomba' %}" class="btn btn-primary">Desactivar bomba</a>
-                            
+                            <br>
+                            <br>
+                            <a href="{% url 'activar_bomba' %}" class="btn-toggle" id="btn-on">
+                                Activar Bomba
+                                <span class="btn-toggle-icon"></span>
+                              </a>
+                              <br>
+                              <a href="{% url 'desactivar_bomba' %}" class="btn-toggle active" id="btn-off">
+                                Desactivar Bomba
+                                <span class="btn-toggle-icon"></span>
+                              </a>
                         </div>
-                        
+
                     </div>
+                    <br>
+                    <a href="#Registros" class="button button--flex">
+                        Galeria de Registros <i class="ri-arrow-right-down-line button__icon"></i>
+                    </a>
                 </div>
             </section>
 
         </main>
 
-        <section class="steps section container">
+        <section class="steps section container" id="Registros">
             <div class="steps__bg">
                 <h2 class="section__title-center steps__title">Galería de Registros</h2>
         
@@ -229,7 +249,10 @@
                                 <h3 class="post__title">{{ post.title }}</h3>
                                 <p>{{ post.description|truncatechars:100 }}</p>
                                 <small>Fecha: {{ post.created_at|date:"d M Y H:i" }}</small>
-                                <a href="{% url 'detect_objects' post.id %}" class="post__link">Ver detecciones</a>
+                                <br>
+                                <a href="{% url 'detect_objects' post.id %}"  class="button--link button--flex">
+                                    Ver detecciones<i class="ri-arrow-right-down-line button__icon"></i>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -260,7 +283,7 @@
                     </div>
                 </div>
 
-                <div class="footer__content">
+                <div class="footer__content" id="contact">
                     <h3 class="footer__title">Direccion</h3>
 
                     <ul class="footer__data">
@@ -307,6 +330,7 @@
         <script src="{% static 'js/main.js' %}"></script>
         <script src="{% static 'js/medidores.js' %}"></script>
         <script src="{% static 'js/sensordht11.js' %}"></script>
+        <script src="{% static 'js/buttons.js' %}"></script>
     </body>
 </html>
 
