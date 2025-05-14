@@ -1,0 +1,18 @@
+{% load static %}
+<div class="detections__row">
+    {% if images %}
+        {% for image in images %}
+            <div class="steps__card">
+                <img src="{{ image.imagen.url }}" alt="Plaga detectada" class="post__image">
+                <div class="post__content">
+                    <h3 class="post__title">Plaga: {{ image.tipo_plaga }}</h3>
+                    <small>Fecha: {{ image.fecha_deteccion|date:"d M Y H:i" }}</small>
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <div class="steps__card empty">
+            <p>No hay imágenes en este álbum aún.</p>
+        </div>
+    {% endif %}
+</div>

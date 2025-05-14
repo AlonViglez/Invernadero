@@ -18,3 +18,19 @@ class PostImage(models.Model):
 
     def __str__(self):
         return f"{self.caption or 'Imagen de ' + self.post.title}"
+
+
+
+
+
+
+
+
+
+class PlagaDeteccion(models.Model):
+    imagen = models.ImageField(upload_to='detections/')
+    tipo_plaga = models.CharField(max_length=255)
+    fecha_deteccion = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.tipo_plaga} - {self.fecha_deteccion}"

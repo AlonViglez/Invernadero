@@ -7,10 +7,24 @@ import requests
 from django.shortcuts import render, redirect
 from .models import Post  # Asegúrate de que el modelo Post esté importado
 
+
+from .models import PlagaDeteccion, Post
+
+from django.http import JsonResponse
+from django.template.loader import render_to_string
+from .models import PlagaDeteccion
+from django.db.models import Count
+import os
+from django.conf import settings
+
+
 def home(request):
     # Obtener los posts
     posts = Post.objects.prefetch_related("images").all()
-
+    
+    ultimas_detecciones = PlagaDeteccion.objects.all().order_by('-fecha_deteccion')[:5]
+    
+    
     # Define la clave de API y la URL de la API
     api_key = 'de7fd6782a3e06e4406140c46f91748d'
     ciudad = 'Manzanillo,MX'
@@ -36,7 +50,8 @@ def home(request):
         pronostico = None
 
     # Devuelve la vista de inicio con los posts y el pronóstico del clima
-    return render(request, 'home.html', {'posts': posts, 'pronostico': pronostico})
+    return render(request, 'home.html', {'posts': posts, 'pronostico': pronostico, 'ultimas_detecciones': ultimas_detecciones
+    })
 #encender bomba desde un boton
 def activar_bomba(request):
     device_id = "370039001547313036303933"
@@ -105,3 +120,27 @@ def detect_objects(request, image_id):
     
     except Exception as e:
         return HttpResponse(f"Error durante la detección: {str(e)}", status=500)
+
+
+
+
+
+
+def deteccion_en_vivo(request):
+    detecciones = PlagaDeteccion.objects.all().order_by('-fecha_deteccion')[:10]
+    return render(request, 'detection_results.html', {'detecciones': detecciones})
+
+def api_albumes(request):
+    # Obtener todas las carpetas de álbumes en media/detections/
+    album_dirs = os.listdir(os.path.join(settings.MEDIA_ROOT, 'detections'))
+    albums = [album for album in album_dirs if album.startswith('album_')]
+    return JsonResponse({'albums': albums})
+
+def api_cargar_album(request):
+    selected_album = request.GET.get('album')
+    if selected_album:
+        images = PlagaDeteccion.objects.filter(imagen__startswith=f'detections/{selected_album}/')
+        context = {'images': images}
+        html = render_to_string('album_partial.html', context)
+        return JsonResponse({'html': html})
+    return JsonResponse({'html': ''})

@@ -57,6 +57,10 @@
                         </li>
 
                         <li class="nav__item">
+                            <a href="#DeteccionesEnVivo" class="nav__link">Detecciones en Vivo</a>
+                        </li>
+
+                        <li class="nav__item">
                             <a href="#contact" class="nav__link">Contacto</a>
                         </li>
                     </ul>
@@ -259,7 +263,28 @@
                     {% endfor %}
                 </div>
             </div>
-        </section>     
+        </section>   
+
+        <!--==================== ÁLBUMES ====================-->
+        <section class="steps section container" id="Albumes">
+            <div class="steps__bg">
+                <h2 class="section__title-center steps__title">Álbumes de Detecciones</h2>
+                <p class="steps__description">Selecciona un álbum para ver las detecciones realizadas en ese intervalo.</p>
+
+                <!-- Selector de álbum -->
+                <select id="album-select" class="button button--flex">
+                    <option value="">Cargando álbumes...</option>
+                </select>
+
+                <!-- Galería de imágenes -->
+                <div class="steps__container grid" id="album-gallery">
+                    <div class="steps__card empty">
+                        <p>Selecciona un álbum para ver las imágenes.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         
         <!--==================== FOOTER ====================-->
         <footer class="footer section">
@@ -331,6 +356,10 @@
         <script src="{% static 'js/medidores.js' %}"></script>
         <script src="{% static 'js/sensordht11.js' %}"></script>
         <script src="{% static 'js/buttons.js' %}"></script>
+        <script src="{% static 'js/detections.js' %}"></script>
+        <script src="{% static 'js/albums.js' %}"></script>
+        <script src="{% static 'js/gallery.js' %}"></script>
+
     </body>
 </html>
 
