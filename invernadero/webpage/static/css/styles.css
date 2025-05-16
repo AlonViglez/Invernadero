@@ -1014,7 +1014,7 @@ the website, in dark theme
 
 /*==================== ÁLBUMES ====================*/
 .steps {
-  padding: 4rem 2rem;
+  padding: 2rem 2rem;
   background-color: #f1f3f6; /* Fondo suave */
 }
 
@@ -1029,7 +1029,7 @@ the website, in dark theme
 }
 
 .steps__bg:hover {
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2); /* Resalta al pasar el mouse */
+  box-shadow: 0 15px 52px rgba(0, 0, 0, 0.2); /* Resalta al pasar el mouse */
 }
 
 .section__title-center.steps__title {
@@ -1086,13 +1086,18 @@ the website, in dark theme
 /* Tarjetas de imagen con efectos */
 .steps__card {
   background-color: #fff;
-  border-radius: 14px;
+  border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12); /* Sombra más marcada */
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  padding: 1.5rem;
-  text-align: center;
+  padding: 2rem; /* Aumenta el padding para más espacio */
   border: 1px solid #e0e0e0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  text-align: center;
 }
 
 .steps__card:hover {
@@ -1124,7 +1129,7 @@ the website, in dark theme
   border-radius: 12px;
   object-fit: cover;
   margin-bottom: 1rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.8);
 }
 
 @media (max-width: 600px) {
@@ -1150,8 +1155,11 @@ the website, in dark theme
 /* Estilo general para .detections__row */
 .detections__row {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); /* Ajusta el tamaño de las columnas */
-  gap: 2rem; /* Espacio entre tarjetas */
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Aumenta el mínimo a 280px */
+  gap: 2rem;
+  justify-content: center;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
 /* Tarjeta de imagen */
@@ -1208,4 +1216,102 @@ the website, in dark theme
 .steps__card.empty p {
   margin: 0 auto;
   max-width: 500px;
+}
+
+
+
+/* Centrar el botón "Iniciar Transmisión" */
+#boton-iniciar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+
+.steps__container.grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* Espacio entre tarjetas */
+}
+
+.steps__card {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  margin-bottom: 20px; /* Espacio vertical adicional */
+}
+
+
+
+
+
+/* Modal estilizado */
+.modal {
+  display: none; /* Oculto por defecto */
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.7); /* Fondo oscuro semi-transparente */
+}
+
+.modal-content {
+  background-color: #fff;
+  margin: 15% auto;
+  padding: 20px;
+  border-radius: 10px;
+  width: 300px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
+.modal-content .close {
+  position: absolute;
+  right: 10px;
+  top: 5px;
+  font-size: 24px;
+  cursor: pointer;
+  color: #999;
+}
+
+.modal-content .close:hover,
+.modal-content .close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal-content p {
+  font-size: 16px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.modal-content .button {
+  margin: 5px;
+}
+
+/* Botones del modal */
+.modal-content .delete-button {
+  background-color: #e74c3c; /* Rojo oscuro */
+  color: white;
+  margin-right: 10px;
+}
+
+.modal-content .cancel-button {
+  background-color: white;
+  color: #333;
+}
+
+.modal-content .button-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
