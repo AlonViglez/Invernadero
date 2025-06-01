@@ -973,7 +973,7 @@ the website, in dark theme
 /* Estado activo - Verde */
 .btn-toggle.active {
   background-color: #50c878;
-  color: white;
+  color: rgb(0, 255, 64);
   box-shadow: 0 4px 12px rgba(80, 200, 120, 0.3);
 }
 
@@ -981,7 +981,7 @@ the website, in dark theme
 .btn-toggle-icon {
   width: 40px;
   height: 20px;
-  background-color: #e0e0e0;
+  background-color: #ff0000;
   border-radius: 999px;
   position: relative;
   transition: background-color 0.3s ease;
@@ -1008,8 +1008,31 @@ the website, in dark theme
 }
 
 
+/*==================== Estado Bomba ====================*/
 
+.estado-bomba {
+  margin-top: 10px;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-weight: bold;
+  background-color: #f0f0f0;
+  display: inline-block;
+}
 
+.estado-bomba.encendida {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+}
+
+.estado-bomba.apagada {
+  background-color: #f5f5f5;
+  color: #616161;
+}
+
+.estado-bomba.error {
+  background-color: #ffebee;
+  color: #c62828;
+}
 
 
 /*==================== ÁLBUMES ====================*/

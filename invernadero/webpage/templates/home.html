@@ -215,15 +215,13 @@
                         <div class="steps__card">
                             <br>
                             <br>
-                            <a href="{% url 'activar_bomba' %}" class="btn-toggle" id="btn-on">
+                            <button class="btn-toggle" id="toggle-bomba" data-estado="off">
                                 Activar Bomba
                                 <span class="btn-toggle-icon"></span>
-                              </a>
-                              <br>
-                              <a href="{% url 'desactivar_bomba' %}" class="btn-toggle active" id="btn-off">
-                                Desactivar Bomba
-                                <span class="btn-toggle-icon"></span>
-                              </a>
+                            </button>
+                            <div id="estado-bomba" class="estado-bomba">
+                                Estado: Bomba apagada
+                            </div>
                         </div>
 
                     </div>

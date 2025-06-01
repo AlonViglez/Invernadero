@@ -2,7 +2,7 @@ function iniciarTransmision() {
     document.getElementById('boton-iniciar').style.display = 'none';
     document.getElementById('camara-container').style.display = 'block';
     const imgElement = document.getElementById('streaming-img');
-    imgElement.src = "http://192.168.1.6:8080/video?" + new Date().getTime();
+    imgElement.src = "http://192.168.1.4:8080/video?" + new Date().getTime();
 }
 
 function detenerTransmision() {

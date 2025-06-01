@@ -10,7 +10,7 @@ from django.conf import settings
 model_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'models', 'best.pt')
 model = YOLO(model_path)
 
-camera_url = "http://192.168.1.6:8080/video"
+camera_url = "http://192.168.1.4:8080/video"
 
 def start_realtime_detection():
     cap = cv2.VideoCapture(camera_url)

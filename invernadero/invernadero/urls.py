@@ -9,8 +9,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),  # Ruta del administrador
     path('', home, name='home'), 
     path('detect/<int:image_id>/', detect_objects, name='detect_objects'),    # Ruta para la página principal
-    path('control/', views.activar_bomba, name='activar_bomba'),
-    path('desact/', views.desactivar_bomba, name='desactivar_bomba'),
+    path('control-bomba/', views.control_bomba, name='control_bomba'),  # Nueva ruta unificada
     path('deteccion-en-vivo/', views.deteccion_en_vivo, name='deteccion_en_vivo'),
     path('api/albumes/', views.api_albumes, name='api_albumes'),
     path('api/cargar-album/', views.api_cargar_album, name='api_cargar_album')
