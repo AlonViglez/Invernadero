@@ -1,20 +1,30 @@
 import cv2
 import os
 import uuid
+import time
 from datetime import datetime
 from ultralytics import YOLO
 from .models import PlagaDeteccion
 from django.conf import settings
 
-# Cargar modelo
+# Cargar modelo YOLO
 model_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'models', 'best.pt')
 model = YOLO(model_path)
 
-camera_url = "http://192.168.1.4:8080/video"
+camera_url = "http://192.168.1.2:8080/video"
 
 def start_realtime_detection():
     cap = cv2.VideoCapture(camera_url)
-    album_timestamp = None  # Para rastrear el último álbum creado
+    
+    capture_interval = 10  # segundos
+    max_images_per_interval = 5
+    saved_images_count = 0
+    interval_start_time = time.time()
+    current_date = datetime.now().strftime("%Y-%m-%d")
+    album_dir = os.path.join(settings.MEDIA_ROOT, 'detections', f'album_{current_date}')
+    os.makedirs(album_dir, exist_ok=True)
+
+    confidence_threshold = 0.6  # umbral de confianza mínimo
 
     while True:
         ret, frame = cap.read()
@@ -25,24 +35,43 @@ def start_realtime_detection():
         results = model(frame)
         annotated_frame = results[0].plot()
 
-        if len(results[0].boxes) > 0:
-            # Genera un nuevo álbum 
-            current_timestamp = int(datetime.now().timestamp())
-            if album_timestamp is None or current_timestamp - album_timestamp >= 10:
-                album_timestamp = current_timestamp
-                album_dir = os.path.join(settings.MEDIA_ROOT, 'detections', f'album_{current_timestamp}')
+        # Filtrar cajas con confianza suficiente
+        filtered_boxes = [box for box in results[0].boxes if box.conf >= confidence_threshold]
+
+        if len(filtered_boxes) > 0:
+            now = time.time()
+
+            # Verificar cambio de día y actualizar carpeta
+            new_date = datetime.now().strftime("%Y-%m-%d")
+            if new_date != current_date:
+                current_date = new_date
+                album_dir = os.path.join(settings.MEDIA_ROOT, 'detections', f'album_{current_date}')
                 os.makedirs(album_dir, exist_ok=True)
+                saved_images_count = 0
+                interval_start_time = now
 
-            filename = f"{uuid.uuid4()}_{datetime.now().strftime('%H%M%S')}.jpg"
-            file_path = os.path.join(album_dir, filename)
-            cv2.imwrite(file_path, annotated_frame)
+            # Reiniciar contador si pasó intervalo
+            if now - interval_start_time >= capture_interval:
+                interval_start_time = now
+                saved_images_count = 0
 
-            detected_classes = [results[0].names[int(box.cls)] for box in results[0].boxes]
-            pest_types = ", ".join(set(detected_classes))
+            # Guardar imagen si no supera límite por intervalo
+            if saved_images_count < max_images_per_interval:
+                saved_images_count += 1
 
-            PlagaDeteccion.objects.create(
-                imagen=f"detections/album_{current_timestamp}/{filename}",
-                tipo_plaga=pest_types
-            )
+                if not os.path.exists(album_dir):
+                    os.makedirs(album_dir, exist_ok=True)
+
+                filename = f"{uuid.uuid4()}_{datetime.now().strftime('%H%M%S')}.jpg"
+                file_path = os.path.join(album_dir, filename)
+                cv2.imwrite(file_path, annotated_frame)
+
+                detected_classes = [results[0].names[int(box.cls)] for box in filtered_boxes]
+                pest_types = ", ".join(set(detected_classes))
+
+                PlagaDeteccion.objects.create(
+                    imagen=f'detections/album_{current_date}/{filename}',
+                    tipo_plaga=pest_types
+                )
 
     cap.release()
