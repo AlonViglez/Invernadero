@@ -7,17 +7,17 @@
 
   /*========== Colors - Greenhouse Theme ==========*/
   --hue: 142;
-  --first-color: #34c759; /* Verde principal como iOS */
+  --first-color: #34c759; /* Verde principal */
   --first-color-alt: #28a745;
   --first-color-light: #52d869;
   --first-color-lighten: #e8f5e8;
   --title-color: #ffffff;
   --text-color: #f2f2f7;
   --text-color-light: #8e8e93;
-  --body-color: #000000; /* Fondo negro como iCloud */
+  --body-color: #000000; 
   --container-color: rgba(28, 28, 30, 0.8);
 
-  /* Colores específicos para el tema oscuro elegante */
+  /* Colores específicos para el tema oscuro  */
   --card-bg: #1c1c1e;
   --card-bg-hover: #2c2c2e;
   --glass-bg: rgba(28, 28, 30, 0.7);
@@ -104,7 +104,7 @@ textarea {
 
 body {
   margin: 0;
-  background: #000000; /* Fondo negro sólido como iCloud */
+  background: #000000; /* Fondo negro  */
   color: var(--text-color);
   transition: all 0.4s ease;
   line-height: 1.6;
@@ -158,7 +158,7 @@ body.dark-theme {
   color: var(--title-color);
   font-size: 1.25rem;
   cursor: pointer;
-  padding: 12px;
+  padding: 7px;
   border-radius: var(--border-radius-md);
   transition: all 0.3s ease;
   background: rgba(255, 255, 255, 0.1);
@@ -247,7 +247,7 @@ body.dark-theme {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 2rem;
+  padding: 0 1rem;
 }
 
 .nav__logo,
@@ -314,7 +314,7 @@ body.dark-theme {
   display: none;
   font-size: 1.5rem;
   cursor: pointer;
-  padding: 12px;
+  padding: 3px;
   border-radius: var(--border-radius-md);
   transition: all 0.3s ease;
 }
@@ -331,7 +331,7 @@ body.dark-theme {
 
   .nav__menu {
     position: fixed;
-    background: rgba(0, 0, 0, 0.95);
+    background: rgba(0, 0, 0, 0.94);
     backdrop-filter: blur(20px);
     width: 100%;
     height: 100vh;
@@ -340,7 +340,7 @@ body.dark-theme {
     box-shadow: none;
     padding: 6rem 2rem 2rem;
     border-radius: 0;
-    transition: all 0.4s ease;
+    transition: all 0.6s ease;
     z-index: var(--z-fixed);
     border: none;
     display: flex;
@@ -383,7 +383,7 @@ body.dark-theme {
 
   .nav__close {
     display: block;
-    font-size: 2rem;
+    font-size: 1rem;
     position: absolute;
     top: 2rem;
     right: 2rem;
