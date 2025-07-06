@@ -16,8 +16,8 @@ camera_url = "http://192.168.1.2:8080/video"
 def start_realtime_detection():
     cap = cv2.VideoCapture(camera_url)
     
-    capture_interval = 10  # segundos
-    max_images_per_interval = 5
+    capture_interval = 30  # segundos
+    max_images_per_interval = 1
     saved_images_count = 0
     interval_start_time = time.time()
     current_date = datetime.now().strftime("%Y-%m-%d")
