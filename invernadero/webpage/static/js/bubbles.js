@@ -50,9 +50,9 @@ const messages = [
   
     setTimeout(() => {
       bubble.remove();
-    }, 6000); // duración que coincide con tu animación
+    }, 6000); // duración que coincide con la animación
   }
   
-  // Lanzar burbujas cada 1s (ajustable)
+  // Lanzar burbujas cada 1s 
   setInterval(createTextBubble, 2000);
   
